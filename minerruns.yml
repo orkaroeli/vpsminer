@@ -2,6 +2,10 @@ version: 1.0.{build}
 
 image: Ubuntu
 
+# Switch to script mode
+build:
+  off
+
 init:
   # Make sure bash is installed (Ubuntu image usually has it pre-installed)
   - sudo apt-get update
