@@ -1,26 +1,22 @@
-apiVersion: kubevirt.io/v1
+apiVersion: kubevirt.io/v1alpha3
 kind: VirtualMachine
 metadata:
-  name: testvm
-  namespace: default
+  name: my-vm
 spec:
-  running: false
+  running: true
   template:
-    metadata:
-      labels:
-        kubevirt.io/domain: testvm
     spec:
       domain:
         devices:
           disks:
-            - disk:
-                bus: virtio
-              name: containerdisk
+          - name: disk0
+            disk:
+              bus: virtio
         resources:
           requests:
-            memory: 512Mi
+            memory: 1024Mi
       volumes:
-        - name: containerdisk
-          containerDisk:
-            image: kubevirt/cirros-container-disk-demo
-            
+      - name: disk0
+        containerDisk:
+          image: kubevirt/cirros-container-disk-demo
+          
