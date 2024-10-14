@@ -1,22 +1,32 @@
-apiVersion: kubevirt.io/v1alpha3
+apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  name: my-vm
+  name: myvm
+  namespace: default
 spec:
-  running: true
+  running: false
   template:
     spec:
       domain:
         devices:
           disks:
-          - name: disk0
-            disk:
+          - disk:
               bus: virtio
+            name: containerdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
         resources:
           requests:
-            memory: 1024Mi
+            memory: 128Mi
       volumes:
-      - name: disk0
+      - name: containerdisk
         containerDisk:
           image: kubevirt/cirros-container-disk-demo
-          
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            password: "password"
+            chpasswd: { expire: False }
+            
