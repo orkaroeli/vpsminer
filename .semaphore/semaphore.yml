@@ -16,3 +16,10 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
+    dependencies: []
+  - name: 'Block #2'
+    dependencies: []
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands: []
