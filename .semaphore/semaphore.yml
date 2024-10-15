@@ -18,7 +18,8 @@ blocks:
             - ./miner
     dependencies: []
   - name: 'Block #2'
-    dependencies: []
+    dependencies:
+      - 'Block #1'
     task:
       jobs:
         - name: 'Job #1'
