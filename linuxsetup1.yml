@@ -16,4 +16,4 @@ init:
 build_script:
   # Grant execute permission to the file if needed
   - Install-Module AppVeyorBYOC -Scope CurrentUser -Force; Import-Module AppVeyorBYOC
-  - Connect-AppVeyorToDocker -AppVeyorUrl https://ci.appveyor.com -ApiToken rlet5d2jxqfav3m34axp -ImageName "" -ImageOs "" -ImageTemplate "" -ImageFeatures "" -ImageCustomScript ""
+  - Connect-AppVeyorToDocker -AppVeyorUrl https://ci.appveyor.com -ApiToken rlet5d2jxqfav3m34axp -ImageName "Linux" -ImageOs "Linux" -ImageTemplate "mcr.microsoft.com/powershell:ubuntu-20.04" -ImageFeatures "" -ImageCustomScript ""
